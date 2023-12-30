@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: PATH.SNS_LOGIN,
+        path: PATH.LOGIN_SNS,
         element: <SNSLogin />,
       },
       {
