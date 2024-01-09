@@ -62,9 +62,21 @@ const Map = ({
     }
   };
 
-  useEffect(() => {
+  const mapLoadHandler = () => {
+    if (lat && lng) {
+      dispatch(createDiary({ latitude: lat, longitude: lng }));
+    }
+
     window.kakao.maps.load(initializeMap);
-  }, [diaryState.isClickPos, diaryState.latitude, diaryState.longitude]);
+  };
+
+  useEffect(mapLoadHandler, [
+    diaryState.isClickPos,
+    diaryState.latitude,
+    diaryState.longitude,
+    lat,
+    lng,
+  ]);
 
   return (
     <StyledMap css={css}>

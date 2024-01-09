@@ -4,6 +4,7 @@ import theme from "@/styles/theme";
 import styled from "@emotion/styled";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { SearchDetailNavType } from "@/constants/menus";
+import useResize from "@/features/hooks/useResize";
 
 interface ResultDetailContentProps {
   activeNav: SearchDetailNavType;
@@ -17,31 +18,11 @@ interface ResultDetailContentProps {
 }
 
 const ResultDetailContent = ({ data, activeNav }: ResultDetailContentProps) => {
-  const [mapHeight, setMapHeight] = useState<number>(0);
-
   const mapHeightRef = useRef<HTMLDivElement>(null);
 
   const handleMapButton = () => {};
 
-  const updateHeight = () => {
-    if (mapHeightRef.current) {
-      setMapHeight(mapHeightRef.current.offsetHeight);
-    }
-  };
-
-  const handleHeight = async () => {
-    await updateHeight();
-
-    window.addEventListener("resize", updateHeight);
-
-    return () => {
-      window.removeEventListener("resize", updateHeight);
-    };
-  };
-
-  useEffect(() => {
-    handleHeight();
-  }, [data]);
+  const { resize } = useResize(mapHeightRef, data);
 
   return (
     <Container ref={mapHeightRef}>
@@ -92,7 +73,7 @@ const ResultDetailContent = ({ data, activeNav }: ResultDetailContentProps) => {
       <MapWrapper>
         <Map
           width="26.125rem"
-          mapHeight={`${mapHeight}px`}
+          mapHeight={`${resize.height}px`}
           lat={data?.lat}
           lng={data?.lng}
         />
