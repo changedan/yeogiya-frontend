@@ -7,7 +7,7 @@ import InfoItem from "@/components/InfoItem";
 import styled from "@emotion/styled";
 
 interface LocationListProps {
-  keyword: string;
+  keyword: string | null;
 }
 
 const LocationList = ({ keyword }: LocationListProps) => {
@@ -22,12 +22,13 @@ const LocationList = ({ keyword }: LocationListProps) => {
       imageUrl: string;
     }[]
   >([]);
+
   const [search, setSearch] = useState({ page: 1, size: 15 });
 
   const diaryState = useAppSelector(diary);
 
   const { data: locationInfo } = useLocationSearch(
-    keyword,
+    keyword !== null && keyword,
     diaryState.latitude,
     diaryState.longitude,
     search.page,

@@ -11,8 +11,10 @@ const MapSearchPage = () => {
   const { value, inputRef, onChange, onReset } = useSearch();
 
   const handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Enter") return setSearch(false);
     if (e.key === "Enter") {
-      setSearch((prevSearch) => !prevSearch);
+      e.preventDefault();
+      setSearch(true);
     }
   };
 
@@ -29,9 +31,9 @@ const MapSearchPage = () => {
         inputRef={inputRef}
         onChange={onChange}
         onReset={onReset}
-        onKeyPress={handleEnter}
+        onKeyDown={handleEnter}
       />
-      <LocationList keyword={isSearch && value} />
+      <LocationList keyword={isSearch ? value : null} />
     </Layout>
   );
 };

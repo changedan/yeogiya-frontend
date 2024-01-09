@@ -15,7 +15,7 @@ interface LocationSearchProps {
   inputRef: MutableRefObject<any>;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onReset: (e: MouseEvent<HTMLButtonElement>) => void;
-  onKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const LocationSearch = ({
@@ -23,7 +23,7 @@ const LocationSearch = ({
   inputRef,
   onChange,
   onReset,
-  onKeyPress,
+  onKeyDown,
 }: LocationSearchProps) => {
   return (
     <Content>
@@ -32,7 +32,7 @@ const LocationSearch = ({
         type="text"
         value={value}
         onChange={onChange}
-        onKeyDown={onKeyPress}
+        onKeyDown={onKeyDown}
         ref={inputRef}
       />
       <StyledIconBtn
