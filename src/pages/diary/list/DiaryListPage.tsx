@@ -46,16 +46,23 @@ const DiaryListPage = () => {
       dayjs(activeMonth).format("MM")
     );
 
-  const handleClickTodayBtn = (date: string) => {
-    if (!accessToken) {
-      navigate(PATH.LOGIN);
-      return;
-    }
-  };
-
   const getActiveMonth = (activeStartDate: Date) => {
     const newActiveMonth = dayjs(activeStartDate).format("YYYY-MM");
     setActiveMonth(newActiveMonth);
+  };
+
+  const handleDiaryDetailClick = (diaryId: number) => {
+    navigate(`${PATH.DIARY}/${diaryId}`);
+  };
+
+  const handleDiaryCreateClick = (dateStr: string) => {
+    navigate(`${PATH.DIARY_MAP}/${dateStr}`);
+  };
+
+  const handleClickTodayBtn = (date: string) => {
+    if (!accessToken) {
+      navigate(PATH.LOGIN);
+    }
   };
 
   return (
@@ -91,12 +98,18 @@ const DiaryListPage = () => {
               {dayDataItem ? (
                 <DiaryLayout key={dateStr} svg={WhitePlusIcon}>
                   {dayDataItem && dayDataItem.diaryImage ? (
-                    <img src={dayDataItem.diaryImage} alt="diary image" />
+                    <img
+                      alt="diary image"
+                      src={dayDataItem.diaryImage}
+                      onClick={() =>
+                        handleDiaryDetailClick(dayDataItem.diaryId)
+                      }
+                    />
                   ) : (
                     dayDataItem && (
                       <IconLayout
                         onClick={() =>
-                          navigate(PATH.DIARY + `/${dayDataItem.diaryId}`)
+                          handleDiaryDetailClick(dayDataItem.diaryId)
                         }
                       >
                         <CheckIcon />
@@ -109,13 +122,13 @@ const DiaryListPage = () => {
                   key={dateStr}
                   svg={WhitePlusIcon}
                   onClick={() => {
-                    navigate(`${PATH.DIARY_MAP}/${dateStr}`);
+                    handleDiaryCreateClick(dateStr);
                   }}
                 >
                   {today && (
                     <TodayIconLayout
                       onClick={() => {
-                        navigate(`${PATH.DIARY_MAP}/${dateStr}`);
+                        handleDiaryCreateClick(dateStr);
                       }}
                     >
                       <PlusIcon />
