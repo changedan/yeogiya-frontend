@@ -22,7 +22,6 @@ import UpdateMyPwPage from "@/pages/my/password/UpdateMyPwPage";
 import WithdrawalPage from "@/pages/my/withdrawal/WithdrawalPage";
 import theme from "@/styles/theme";
 import ConfirmWithdrawalPage from "@/pages/my/withdrawal/ConfirmWithdrawalPage";
-import ScrollToTop from "@/components/@common/ScrollToTop";
 import SNSLogin from "@/pages/login/components/SNSLogin";
 import NotFoundPage from "@/pages/404/NotFoundPage";
 import DiaryDetailPage from "@/pages/diary/detail/DiaryDetailPage";
@@ -55,7 +54,6 @@ export const router = createBrowserRouter([
         path: PATH.JOIN,
         element: (
           <Fragment>
-            <ScrollToTop />
             <JoinPage />
           </Fragment>
         ),
@@ -147,7 +145,6 @@ export const router = createBrowserRouter([
         path: PATH.RESULT_DETAIL,
         element: (
           <Fragment>
-            <ScrollToTop />
             <SearchDetailPagePage />
           </Fragment>
         ),

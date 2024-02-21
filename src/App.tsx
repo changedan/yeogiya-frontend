@@ -4,6 +4,7 @@ import MapNavbar from "./pages/diary/map/components/MapNavbar";
 import Navbar from "@/components/@common/Navbar";
 import { Outlet } from "react-router-dom";
 import ProtectRoute from "./utils/ProtectRouter";
+import ScrollToTop from "@/components/@common/ScrollToTop";
 
 interface AppProps {
   layout?: "default" | "diaryMap" | "locationSearch" | "placeSearch" | "login";
@@ -14,6 +15,7 @@ const App = ({ layout = "default" }: AppProps) => {
     case "diaryMap":
       return (
         <Fragment>
+          <ScrollToTop />
           <MapNavbar />
           <ProtectRoute />
         </Fragment>
@@ -21,6 +23,7 @@ const App = ({ layout = "default" }: AppProps) => {
     case "locationSearch":
       return (
         <Fragment>
+          <ScrollToTop />
           <LocationSearchNavbar />
           <ProtectRoute />
         </Fragment>
@@ -28,6 +31,7 @@ const App = ({ layout = "default" }: AppProps) => {
     case "placeSearch":
       return (
         <Fragment>
+          <ScrollToTop />
           <Navbar type="placeSearch" />
           <Outlet />
         </Fragment>
@@ -35,6 +39,7 @@ const App = ({ layout = "default" }: AppProps) => {
     case "login":
       return (
         <Fragment>
+          <ScrollToTop />
           <Navbar type="default" />
           <ProtectRoute />
         </Fragment>
@@ -42,6 +47,7 @@ const App = ({ layout = "default" }: AppProps) => {
     default:
       return (
         <Fragment>
+          <ScrollToTop />
           <Navbar type="default" />
           <Outlet />
         </Fragment>
