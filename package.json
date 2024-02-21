@@ -13,7 +13,7 @@
     "preinstall": "npx only-allow pnpm",
     "prepare-husky": "chmod +x .husky/commit-msg && husky install",
     "postinstall": "if [ -z \"$VERCEL\" ]; then pnpm run prepare-husky; else echo 'Skipping Husky setup on Vercel'; fi",
-    "test": "jest src"
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",

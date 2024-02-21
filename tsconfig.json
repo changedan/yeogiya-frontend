@@ -17,7 +17,7 @@
     },
     "types": ["jest", "@testing-library/jest-dom"]
   },
-  "include": ["src", "jest.setup.ts", "test", "global.d.ts"],
+  "include": ["src", "jest.setup.ts", "test", "global.d.ts", "test"],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

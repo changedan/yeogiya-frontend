@@ -9,7 +9,7 @@ export default async (): Promise<Config> => {
     moduleNameMapper: {
       "^@/(.*)$": "<rootDir>/src/$1",
     },
-    testMatch: ["**/test/**/*.test.(jsx|tsx)"],
+    testMatch: ["**/test/**/*.test.(ts|tsx)"],
     transformIgnorePatterns: ["<rootDir>/node_modules/"],
   };
 };

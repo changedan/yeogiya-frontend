@@ -3,8 +3,8 @@ import { render, screen } from "@testing-library/react";
 import Button from "@/components/@common/Button";
 import theme from "@/styles/theme";
 
-describe("<Button />", () => {
-  it("button render", () => {
+describe("Button Test", () => {
+  it("should render text when button text is entered", () => {
     render(<Button text="render test" />);
     const button = screen.getByRole("button");
     expect(button).toBeInTheDocument();
