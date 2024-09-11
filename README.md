@@ -6,8 +6,7 @@
 
 ![IA](./public/images/readme-ia.svg)
 
-![TechStacks](./public/images/readme-tech_stacks.svg)
-
+<img src="https://github.com/user-attachments/assets/045e1f7b-d717-4d6a-9542-b20f9c28a63b" width='830'/>
 
 ## 멤버
 
